@@ -6,20 +6,18 @@ services:
     image: redis:alpine
     command: redis-server --appendonly yes
     env_file:
-        - ./library_manager/.env
+        - "./caches/.env"
     networks:
         - laravel
 
   memcached:
     image: docker.io/bitnami/memcached:1
     env_file:
-        - ./library_manager/.env
+        - "./caches/.env"
     #ports:
     #  - 11211:11211
     networks:
         - laravel
-    env_file:
-        - ./library_manager/.env
 
 networks:
   laravel:

@@ -14,14 +14,29 @@ class SeriesSeeder extends Seeder
      */
     public function run(): void
     {
-        $s = [
-            [
-                "id" => 1,
-                "name" => "Vér és hamu"
-            ]
-        ];
-
-
-        Series::insert($s);
+        if(Series::count() == 0) {
+            $s = [
+                [
+                    "id" => 1,
+                    "name" => "Vér és hamu"
+                ],
+                [
+                    "id" => 2,
+                    "name" => "Sötét, magányos átok"
+                ],
+                [
+                    "id" => 3,
+                    "name" => "Velünk véget ér"
+                ],
+                [
+                    "id" => 4,
+                    "name" => "Hemul triológia"
+                ]
+            ];
+    
+    
+            Series::insert($s);
+        }
+        
     }
 }

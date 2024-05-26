@@ -16,6 +16,9 @@ role=${CONTAINER_ROLE:-app}
 composer clear-cache
 composer update
 
+#chown -R mysql:mysql /var/log/mysql
+
+
 if [ "$role" = "app" ]; then
     php artisan migrate
     #php artisan db:seed
@@ -24,6 +27,7 @@ if [ "$role" = "app" ]; then
     php artisan cache:clear
     php artisan config:clear
     php artisan route:clear
+    php artisan db:seed
     #php artisan app:cache-memcached
     php artisan serve --port=$PORT --host=0.0.0.0 --env=.env
     exec docker-php-entrypoint "$@"

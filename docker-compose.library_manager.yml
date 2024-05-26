@@ -9,7 +9,7 @@ services:
       args:
         - APP_ENV=${APP_ENV}
     env_file:
-      - ./library_manager/.env
+      - "./library_manager/.env"
     environment:
       - APP_ENV=${APP_ENV}
       - CONTAINER_ROLE=app
@@ -29,7 +29,7 @@ services:
     #ports:
     #  - 3306:3306
     env_file:
-      - ./library_manager/.env
+      - "./library_manager/.env"
     environment:
       - MYSQL_DATABASE=library
       - MYSQL_USER=valami
@@ -37,10 +37,20 @@ services:
       - MYSQL_ROOT_PASSWORD=root
     volumes:
       - db-data:/var/lib/mysql
-      - /logs:/var/log/mysql
+      - ./db_logs:/var/log/mysql/error.log
+      - ./db_logs:/var/log/mysql/general.log
+      - ./db_logs:/var/log/mysql/slow_query.log
+      - ./db_logs/logs:/var/log/mysql/logs
+      - ./library_manager/mariadb/my.cnf:/etc/mysql/my.cnf
     networks:
       - laravel
     
+  cron:
+    build:
+      context: ./library_manager
+      dockerfile: cron.Dockerfile
+    volumes:
+      - ./library_manager/cron/cronjob:/etc/cron.d/cronjob
 
 volumes:
   db-data: ~

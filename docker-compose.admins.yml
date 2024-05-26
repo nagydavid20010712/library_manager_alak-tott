@@ -6,9 +6,9 @@ services:
     image: rediscommander/redis-commander:latest
     restart: always
     env_file:
-      - ./library_manager/.env
+      - "./admins/.env"
     environment:
-      - REDIS_HOSTS=local:redis:6379
+      - REDIS_HOSTS=${REDIS_HOST}
       - VIRTUAL-HOST=admin.redis.localhost
     ports:
       - 8081:8081
@@ -19,10 +19,10 @@ services:
   admin:
     image: hatamiarash7/memcached-admin:latest
     env_file:
-      - ./library_manager/.env
+      - "./admins/.env"
     environment:
-      - MEMCACHED_HOST=memcached
-      - MEMCACHED_PORT=11211
+      - MEMCACHED_HOST=${MEMCACHED_HOST}
+      - MEMCACHED_PORT=${MEMCACHED_PORT}
       - VIRTUAL-HOST=admin.memcached.localhost
     ports:
       - 8085:80
@@ -34,7 +34,7 @@ services:
     image: phpmyadmin/phpmyadmin:latest
     restart: always
     env_file:
-      - ./library_manager/.env
+      - "./admins/.env"
     ports:
       - 7000:80
     environment:
