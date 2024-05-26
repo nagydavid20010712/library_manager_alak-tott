@@ -8,7 +8,7 @@ services:
     env_file:
       - "./admins/.env"
     environment:
-      - REDIS_HOSTS=${REDIS_HOST}
+      - REDIS_HOSTS=local:redis:6379
       - VIRTUAL-HOST=admin.redis.localhost
     ports:
       - 8081:8081
@@ -21,8 +21,8 @@ services:
     env_file:
       - "./admins/.env"
     environment:
-      - MEMCACHED_HOST=${MEMCACHED_HOST}
-      - MEMCACHED_PORT=${MEMCACHED_PORT}
+      - MEMCACHED_HOST=memcached
+      - MEMCACHED_PORT=11211
       - VIRTUAL-HOST=admin.memcached.localhost
     ports:
       - 8085:80
@@ -39,7 +39,7 @@ services:
       - 7000:80
     environment:
       - PMA_HOST=database
-      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=root
       - VIRTUAL-HOST=admin.phpmyadmin.localhost
     networks:
       - laravel

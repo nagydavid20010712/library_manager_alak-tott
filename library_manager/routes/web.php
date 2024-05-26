@@ -15,7 +15,7 @@ Route::get("/view_book/{book_isbn}", [ViewBookController::class, "index"]);
 Route::get("/view_book", function() {
     return redirect("/list_books");
 });
-Route::delete("/delete_book/{book_isbn}", [ViewBookController::class, "delete_book"])->middleWare(ChechAuth::class);
+Route::delete("/delete_book/{book_isbn}", [ViewBookController::class, "delete_book"])->middleWare(CheckAuth::class);
 Route::post("/update_book", [ViewBookController::class, "update_book"])->middleWare(CheckAuth::class);
 Route::post("/translate", [ViewBookController::class, "translate"]);
 Route::post("/recommend", [ViewBookController::class, "recommend"])->middleWare(CheckAuth::class);

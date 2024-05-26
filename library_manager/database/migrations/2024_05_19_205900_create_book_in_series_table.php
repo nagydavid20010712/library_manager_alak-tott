@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('book_in_series', function (Blueprint $table) {
             $table->string("isbn", length: 200);
             $table->integer("series_id");
+            $table->foreign("isbn")->references("isbn")->on("books")->onDelete("cascade");
         });
     }
 
