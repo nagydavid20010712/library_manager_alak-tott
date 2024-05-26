@@ -67,7 +67,7 @@ class AddBookController extends Controller
         $w_isbn = preg_replace('/\s+/', '', $request->input("isbn"));
         $w_language = preg_replace('/\s+/', '', $request->input("language"));
         $w_number_of_pages = preg_replace('/\s+/', '', $request->input("number_of_pages"));
-        $w_new_series = preg_replace('/\s+/', '', $request->input("new_series"));
+        $w_new_series = preg_replace('/\s+/', '', $request->input("new_series") == null ? " " : $request->input("new_series"));
 
         if($request->input("checked") == "true" && $w_new_series === "") {
             
@@ -94,8 +94,7 @@ class AddBookController extends Controller
            $w_publisher == $cleaned_publisher &&
            $w_isbn == $cleaned_isbn &&
            $w_language == $cleaned_language &&
-           $w_number_of_pages == $cleaned_number_of_pages &&
-           $w_new_series == $cleaned_new_series) 
+           $w_number_of_pages == $cleaned_number_of_pages) 
            {
                 $cover = $request->file("cover");
                 $cover_name = $request->input('isbn') . "." . $cover->getClientOriginalExtension();
@@ -192,7 +191,7 @@ class AddBookController extends Controller
                     if($e->errorInfo[1] == 1062) {
                         return response()->json(["msgType" => "duplicate_error", "msg" => "Ilyen ISBN számú könyv már szerepel az adatbázisban!"], 200);
                     }
-                    //Log::info($e->getMessage());
+                    Log::info($e->getMessage());
                     return response()->json(["msgType" => "insert_error", "msg" => "Hiba történt a könyv hozzáadása során!"], 200);
                 }
 

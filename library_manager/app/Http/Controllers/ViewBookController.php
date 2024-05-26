@@ -172,7 +172,7 @@ class ViewBookController extends Controller
                 unset($series["books"][$index]);
 
                 /*ha a széria összes könyvét kitöröltük akkor a szériát is kitörötljük a cache-ből különben frissítjük*/
-                if(count($series["books"][$index]) == 0) {
+                if(count($series["books"]) == 0) {
                     Cache::store("memcached")->forget($s_key);
                 } else {
                     Cache::store("memcached")->put($s_key, $series, now()->addHour());

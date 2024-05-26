@@ -21,6 +21,8 @@ class Book extends Model
         "writers",
         "cover",
         "publish_date",
-        "number_of_pages"
+        "number_of_pages",
+        "created_at",
+        "modified_at"
     ];
 }
