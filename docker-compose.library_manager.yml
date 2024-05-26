@@ -1,0 +1,50 @@
+version: "3.8"
+services:
+
+  php:
+    build:
+      context: ./library_manager
+      dockerfile: Dockerfile
+      target: php
+      args:
+        - APP_ENV=${APP_ENV}
+    env_file:
+      - ./library_manager/.env
+    environment:
+      - APP_ENV=${APP_ENV}
+      - CONTAINER_ROLE=app
+      - VIRTUA_HOST=library.localhost
+    working_dir: /var/www
+    volumes:
+      - ./library_manager:/var/www
+    ports:
+      - 8000:8000
+    networks:
+      - laravel
+    
+
+
+  database:
+    image: mariadb:latest
+    #ports:
+    #  - 3306:3306
+    env_file:
+      - ./library_manager/.env
+    environment:
+      - MYSQL_DATABASE=library
+      - MYSQL_USER=valami
+      - MYSQL_PASSWORD=
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - db-data:/var/lib/mysql
+      - /logs:/var/log/mysql
+    networks:
+      - laravel
+    
+
+volumes:
+  db-data: ~
+
+networks:
+  laravel:
+    driver: bridge

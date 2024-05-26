@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    restart: always
+    env_file:
+      - ./library_manager/.env
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+      - VIRTUAL-HOST=admin.redis.localhost
+    ports:
+      - 8081:8081
+    networks:
+      - laravel
+    
+
+  admin:
+    image: hatamiarash7/memcached-admin:latest
+    env_file:
+      - ./library_manager/.env
+    environment:
+      - MEMCACHED_HOST=memcached
+      - MEMCACHED_PORT=11211
+      - VIRTUAL-HOST=admin.memcached.localhost
+    ports:
+      - 8085:80
+    networks:
+      - laravel
+    
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    env_file:
+      - ./library_manager/.env
+    ports:
+      - 7000:80
+    environment:
+      - PMA_HOST=database
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - VIRTUAL-HOST=admin.phpmyadmin.localhost
+    networks:
+      - laravel
+    
+
+networks:
+  laravel:
+    driver: bridge

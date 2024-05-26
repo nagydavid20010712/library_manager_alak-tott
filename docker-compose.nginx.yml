@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  nginx_proxy:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    networks:
+      - laravel
+
+networks:
+  laravel:
+    driver: bridge
