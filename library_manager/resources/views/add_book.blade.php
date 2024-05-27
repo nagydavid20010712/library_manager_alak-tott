@@ -54,14 +54,14 @@
                 <div class="row">
                     <div class="col-6">
                         <label for="isbn">ISBN</label>
-                        <input type="number" name="isbn" id="isbn" class="form-control">
+                        <input type="number" name="isbn" id="isbn" class="form-control" required>
                         <div class="alert alert-danger mt-2" id="isbn_error" role="alert">
                
                         </div>
                     </div>
                     <div class="col-6">
                         <label for="publisher">Kiadó</label>
-                        <input type="text" name="publisher" id="publisher" class="form-control">
+                        <input type="text" name="publisher" id="publisher" class="form-control" required>
                         <div class="alert alert-danger mt-2" id="publisher_error" role="alert">
 
                         </div>
@@ -71,13 +71,13 @@
                     <div class="col-6">
                         <label for="title">Cím</label>
                         <input type="text" name="title" id="title" class="form-control">
-                        <div class="alert alert-danger mt-2" id="title_error" role="alert">
+                        <div class="alert alert-danger mt-2" id="title_error" role="alert" required>
                
                         </div>
                     </div>
                     <div class="col-6">
                         <label for="publish">Megjelenés éve</label>
-                        <input type="number" name="publish" id="publish" class="form-control">
+                        <input type="number" name="publish" id="publish" class="form-control" required>
                         <div class="alert alert-danger mt-2" id="publish_error" role="alert">
                
                         </div>
@@ -86,14 +86,14 @@
                 <div class="row mt-2">
                     <div class="col-6">
                         <label for="description">Ismertető</label>
-                        <textarea name="description" id="description" class="form-control" rows="4"></textarea>
+                        <textarea name="description" id="description" class="form-control" rows="4" required></textarea>
                         <div class="alert alert-danger mt-2" id="description_error" role="alert">
                         
                         </div>
                     </div>
                     <div class="col-6">
                         <label for="writers">Szerző(k)</label>
-                        <input type="text" name="writers" id="writers" class="form-control">
+                        <input type="text" name="writers" id="writers" class="form-control" required>
                         <div class="alert alert-danger mt-2" id="writers_error" role="alert">
                         
                         </div>
@@ -102,14 +102,14 @@
                 <div class="row mt-2">
                     <div class="col-6">
                         <label for="language">Nyelv</label>
-                        <input type="text" class="form-control" name="language" id="language">
+                        <input type="text" class="form-control" name="language" id="language" required>
                         <div class="alert alert-danger mt-2" id="language_error" role="alert">
                     
                         </div>
                     </div>
                     <div class="col-6">
                         <label for="number_of_pages">Oldalak száma</label>
-                        <input type="number" class="form-control" name="number_of_pages" id="number_of_pages">
+                        <input type="number" class="form-control" name="number_of_pages" id="number_of_pages" required>
                         <div class="alert alert-danger mt-2" id="number_of_pages_error" role="alert">
                     
                         </div>
@@ -118,14 +118,14 @@
                 <div class="row mt-2">
                     <div class="col-6">
                         <label for="genre">Műfaj</label>
-                        <input type="text" name="genre" id="genre" class="form-control">
+                        <input type="text" name="genre" id="genre" class="form-control" required>
                         <div class="alert alert-danger mt-2" id="genre_error" role="alert">
                     
                         </div>
                     </div>
                     <div class="col-6">
                         <label for="cover">Borítókép</label>
-                        <input type="file" class="form-control" name="cover" id="cover">
+                        <input type="file" class="form-control" name="cover" id="cover" required>
                         <div class="alert alert-danger mt-2" id="cover_error" role="alert">
                 
                         </div>

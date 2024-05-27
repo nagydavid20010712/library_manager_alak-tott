@@ -73,7 +73,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="log_email" class="form-label">Email cím</label>
-                        <input type="email" class="form-control" id="log_email" name="log_email">
+                        <input type="email" class="form-control" id="log_email" name="log_email" required>
                         @error('log_email')
                             <div class="alert alert-danger mt-2" role="alert">
                                 {{ $message }}
@@ -98,7 +98,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="reg_fname" class="form-label">Vezetéknév</label>
-                        <input type="text" name="reg_fname" id="reg_fname" class="form-control" name="reg_fname" >
+                        <input type="text" name="reg_fname" id="reg_fname" class="form-control" name="reg_fname" required>
                         @error('reg_fname')
                             <div class="alert alert-danger mt-2" role="alert">
                                 {{ $message }}
@@ -107,7 +107,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="reg_lname" class="form-label">Keresztnév</label>
-                        <input type="text" name="reg_lname" id="reg_lname" class="form-control" name="reg_lname" >
+                        <input type="text" name="reg_lname" id="reg_lname" class="form-control" name="reg_lname" required>
                         @error('reg_lname')
                             <div class="alert alert-danger mt-2" role="alert">
                                 {{ $message }}
@@ -116,7 +116,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="reg_email" class="form-label">Email cím</label>
-                        <input type="email" class="form-control" id="reg_email" name="reg_email" >
+                        <input type="email" class="form-control" id="reg_email" name="reg_email" required>
                         @error('reg_email')
                             <div class="alert alert-danger mt-2" role="alert">
                                 {{ $message }}
@@ -125,7 +125,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="reg_password" class="form-label">Jelszó (min 6 karakter)</label>
-                        <input type="password" class="form-control" id="reg_password" name="reg_password" >
+                        <input type="password" class="form-control" id="reg_password" name="reg_password" required>
                         @error('reg_password')
                             <div class="alert alert-danger mt-2" role="alert">
                                 {{ $message }}
